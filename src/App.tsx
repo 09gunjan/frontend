@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AnalyticsDashboard from './pages/manager/AnalyticsDashboard';
 import TeamOverview from './pages/manager/TeamOverview';
 import CreateAssignment from './pages/manager/CreateAssignment';
-import ProjectManagement from './pages/manager/Projectmanagement';
+import ProjectManagement from './pages/manager/ProjectManagement';
 import MyAssignments from './pages/engineer/MyAssignments';
 import Profile from './pages/engineer/Profile';
 import Login from './pages/Login';
