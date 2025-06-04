@@ -17,9 +17,15 @@ function Login() {
     const success = await login(email, password);
     if (success) {
       const user = JSON.parse(localStorage.getItem("user") || "{}");
-      if (user.role === "manager") navigate("/manager/overview");
-      else if (user.role === "engineer") navigate("/engineer/assignments");
+  
+      // Navigate with full layout path
+      if (user.role === "manager") {
+        navigate("/manager", { replace: true });
+      } else if (user.role === "engineer") {
+        navigate("/engineer", { replace: true });
+      }
     }
+  };
   
 
 

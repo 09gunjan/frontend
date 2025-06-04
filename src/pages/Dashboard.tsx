@@ -1,3 +1,4 @@
+// src/pages/Dashboard.tsx
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,16 +7,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
-    
-    // Optional: auto-redirect only IF current path is '/dashboard'
-    const isRootOrDashboard = window.location.pathname === "/" || window.location.pathname === "/dashboard";
-    
-    if (user && isRootOrDashboard) {
-      if (user.role === "manager") navigate("/manager/overview");
-      else if (user.role === "engineer") navigate("/engineer/assignments");
+
+    if (user) {
+      // ✅ Redirect to full paths
+      if (user.role === "manager") {
+        navigate("/manager/overview", { replace: true });
+      } else if (user.role === "engineer") {
+        navigate("/engineer/assignments", { replace: true });
+      }
     }
   }, [navigate]);
-  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-green-100">

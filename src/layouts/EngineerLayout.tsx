@@ -1,12 +1,11 @@
-// src/layouts/EngineerLayout.tsx
 import { Outlet } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { useAuthStore } from "@/store/authStore";
 
 const EngineerLayout = () => {
-  const { user } = useAuthStore();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Navbar role={user?.role || "engineer"} />
       <main className="p-6">
         <Outlet />
@@ -15,4 +14,4 @@ const EngineerLayout = () => {
   );
 };
 
-export default EngineerLayout;
+export default EngineerLayout; 
