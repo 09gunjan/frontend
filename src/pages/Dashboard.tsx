@@ -6,9 +6,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
-    if (user?.role === "manager") navigate("/manager/overview");
-    else if (user?.role === "engineer") navigate("/engineer/assignments");
+    
+    // Optional: auto-redirect only IF current path is '/dashboard'
+    const isRootOrDashboard = window.location.pathname === "/" || window.location.pathname === "/dashboard";
+    
+    if (user && isRootOrDashboard) {
+      if (user.role === "manager") navigate("/manager/overview");
+      else if (user.role === "engineer") navigate("/engineer/assignments");
+    }
   }, [navigate]);
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-green-100">
